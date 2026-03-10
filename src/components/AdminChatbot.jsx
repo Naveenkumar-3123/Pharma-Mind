@@ -54,7 +54,8 @@ export default function AdminChatbot() {
 
             try {
                 // Send email to dhevadharshini05@gmail.com for bulk refill
-                await fetch('http://localhost:3012/api/send-bulk-refill', {
+                const API_PORT = import.meta.env.VITE_API_PORT || '3012';
+                await fetch(`http://localhost:${API_PORT}/api/send-bulk-refill`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

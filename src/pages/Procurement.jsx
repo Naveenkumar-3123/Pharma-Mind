@@ -41,7 +41,8 @@ export default function Procurement() {
 
                 try {
                     // Send to backend to trigger email workflow
-                    await fetch('http://localhost:3012/api/send-refill-request', {
+                    const API_PORT = import.meta.env.VITE_API_PORT || '3012';
+                    await fetch(`http://localhost:${API_PORT}/api/send-refill-request`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({

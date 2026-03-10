@@ -42,7 +42,8 @@ export async function triggerRealReminderAPI(patient) {
     const daysRemaining = getDaysRemaining(patient.endDate);
 
     try {
-        const res = await fetch('http://localhost:3012/api/send-reminder', {
+        const API_PORT = import.meta.env.VITE_API_PORT || '3012';
+        const res = await fetch(`http://localhost:${API_PORT}/api/send-reminder`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
